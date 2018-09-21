@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--指明 controller 所在包，并扫描其中的注解,千万不要只扫描controller-->
+    <context:component-scan base-package="com.firstgroup.controller"/>
+    <!-- 使用默认处理器处理静态资源 -->
+    <mvc:default-servlet-handler/>
+
+    <!--静态资源(js、image等)的访问-->
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/styles/**" location="/styles/" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <!-- 开启注解 -->
+    <mvc:annotation-driven/>
+
+    <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
+    <!--<bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <!-- ViewResolver 视图解析器  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀 和 后缀 -->
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
