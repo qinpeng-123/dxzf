@@ -3,16 +3,10 @@
 
 * URL 格式: `http://${host}/interface/realtime/identify/multi`
 * 参数:
-  Name | Academy | score 
-- | :-: | -: 
-Harry Potter | Gryffindor| 90 
-Hermione Granger | Gryffindor | 100 
-Draco Malfoy | Slytherin | 90
---------------------- 
-作者：tuxingchen6 
-来源：CSDN 
-原文：https://blog.csdn.net/tuxingchen6/article/details/55222951 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+| 左对齐标题 | 右对齐标题 | 居中对齐标题 |
+| :------| ------: | :------: |
+| 短文本 | 中等文本 | 稍微长一点的文本 |
+| 稍微长一点的文本 | 短文本 | 中等文本 |
 * 返回:
   - String格式数
 
