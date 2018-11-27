@@ -1,182 +1,37 @@
-realtime模块，提供HTTP接口，支持GET和POST请求方式。
-# 目录
-[1.Identify](realtime接口.md#1.identify接口)  
-## realTime模块
-### 1.Identify接口 
-#### multi
+## GetIvrOption
 
-- URL 格式: `http://${host}/interface/realtime/identify/multi`
+* URL:/interface/ivr/GetIvrOption
+* Method:GET
+* Content type: application/json
+* 输入参数：
 
-- 参数:  
-    | 字段 | 可选 | 描述               |
-    | ---- | ---- | ------------------ |
-    | id   | 不限 | 傻傻的广东省更多撒 |
+| 参数名         | 是否必填 | 数据类型 | 说明                      |
+| -------------- | -------- | -------- | ------------------------- |
+| gwIp           | 是       | String   | 呼叫来源IP eg.10.10.3.235 |
+| numberTrunk    | 是       | String   | 中继号码 eg.80206528      |
+| customerNumber | 是       | String   | 客户号码 eg.18800101027   |
+| callType       | 是       | String   | 呼叫类型 eg.1             |
+| webcallIvrId   | 是       | String   | web呼叫IVR ID             |
+| enterpriseId   | 是       | String   | 企业ID                    |
 
-- 返回:
-  - String格式数
+* 返回结果：
 
-  |   字段          |   可选 |   描述                                 |
-  |   ------------ |   ---- |   ------------------------------------|
-  |   id           |   必选 |   等同于网关名称                         |
-  |   type         |   必选 |   固定为identify                        |
-  |   endpoint     |   必选 |   等同于网关名称                         |
-  |   match        |   必选 |   等同于网关ip地址                       |
-  - 示例: `id=gateway.1&type=identify&endpoint=gateway.1&match_header=P-Tinet-Identify-Endpoint: gateway.1`
-
-
-
-#### single
-
-- URL 格式: `http://${host}/interface/realtime/identify/single,id=10.10.5.157`
-- 参数:  
-    |   字段          |   可选 |   描述                                 |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   id           |   必选 |   网关ip地址或网关名称                    |
-- 返回:
-  - String格式数
-
-  |   字段          |   可选 |   描述                                  |
-  |   ------------ |   ---- |   ------------------------------------ |
-  |   id           |   必选 |   等同于网关名称                          |
-  |   type         |   必选 |   固定为identify                         |
-  |   endpoint     |   必选 |   等同于网关名称                          |
-  |   match        |   必选 |   等同于网关ip地址                        |
-  - 示例: `id=gateway.1&type=identify&endpoint=gateway.1&match_header=P-Tinet-Identify-Endpoint: gateway.1`
-
-### 2.Moh接口
-#### multi
-
-- URL 格式: `http://${host}/interface/realtime/moh/multi`
-- 参数:  
-    |   字段          |   可选 |   描述                                |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   name         |   必选 |   类名 格式：企业号+类名                |
-- 返回:
-  - String格式数
-
-  |   字段          |   可选 |   描述                                 |
-  |   ------------ |   ---- |   ------------------------------------|
-  |   name         |   必选 |   类名 格式：企业号+类名                   |
-  |   mode         |   必选 |   模式                                  |
-  |   directory    |   必选 |   频文件的路径                           |
-  
-
-
-#### single
-
-- URL 格式: `http://${host}/interface/realtime/moh/single`
-- 参数:  
-    |   字段          |   可选 |   描述                                   |
-    |   ------------ |   ---- |   --------------------------------------|
-    |   name         |   必选 |   类名 格式：企业号+类名                    |
-- 返回:
-  - String格式数
-
-  |   字段         |   可选 |   描述                                      |
-  |   ------------ |   ---- |   ----------------------------------------|
-  |   name         |   必选 |   类名 格式：企业号+类名                      |
-  |   mode         |   必选 |   模式                                     |
-  |   directory    |   必选 |   频文件的路径                               |
-
-### 3.SipUsers接口
-#### multi
-
-- URL 格式: `http://${host}/interface/realtime/sipUsers/multi`
-- 参数:  
-    |   字段          |   可选 |   描述                                |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   name         |   必选 |   ip地址或网关名称              |
-- 返回:
-  - String格式数
-
-  |   字段          |   可选 |   描述                                 |
-  |   ------------ |   ---- |   ------------------------------------|
-  |   name         |   必选 |   当参数name是ip地址时该值等同于name,否则该值等同于网关名称|
-  |   type         |   必选 |   类型,固定为friend                       |
-  |   host         |   必选 |   域名,等同于ip地址                        |
-  |   context      |   必选 |   固定为default                           |
-  |   call-limit   |   必选 |   网关吞吐能力                             |
-  |   ipaddr       |   必选 |   网关ip地址                              |
-  |   port         |   必选 |   sip信令端口                             |
-  |   disallow     |   必选 |   网关codec选择disallow                   |
-  |   allow        |   必选 |   网关codec选择allow                      |
-  |   dtmf_mode    |   必选 |   网关的dtmf设置 rfc2833/info/auto/inband |
-  |   change       |   必选 |   是否变更,1表示变更,0表示未变更             |
-  
-
-
-#### single
-- URL 格式: `http://${host}/interface/realtime/sipUsers/multi`
-- 参数:  
-    |   字段          |   可选 |   描述                                |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   name         |   必选 |   ip地址或网关名称              |
-- 返回:
-  - String格式数
-
-  |   字段          |   可选 |   描述                                 |
-  |   ------------ |   ---- |   ------------------------------------|
-  |   name         |   必选 |   当参数name是ip地址时该值等同于name,否则该值等同于网关名称|
-  |   type         |   必选 |   类型,固定为friend                       |
-  |   host         |   必选 |   域名,等同于ip地址                        |
-  |   context      |   必选 |   固定为default                           |
-  |   call-limit   |   必选 |   网关吞吐能力                             |
-  |   ipaddr       |   必选 |   网关ip地址                              |
-  |   port         |   必选 |   sip信令端口                             |
-  |   disallow     |   必选 |   网关codec选择disallow                   |
-  |   allow        |   必选 |   网关codec选择allow                      |
-  |   dtmf_mode    |   必选 |   网关的dtmf设置 rfc2833/info/auto/inband |
-  |   change       |   必选 |   是否变更,1表示变更,0表示未变更             |
-  
-### 4.EndPoint接口
-#### multi
-
-- URL 格式: `http://${host}/interface/realtime/endpoint/multi`
-- 参数:  
-    |   字段          |   可选 |   描述                                |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   id           |   必选  |   ip地址或网关名称                       |
-- 返回:
-  - String格式数
-
-  |   字段                 |   可选 |   描述                                   |
-  |   ------------        |   ---- |   ------------------------------------  |
-  |   id                  |   必选 |   网关名称                                |
-  |   type                |   必选 |   固定为endpoint                          |
-  |   transport           |   必选 |   固定为transport-udp-nat                 |
-  |   context             |   必选 |   固定为default                           |
-  |   disallow            |   必选 |   网关codec选择disallow                   |
-  |   allow               |   必选 |   网关codec选择allow                      |
-  |   dtmf_mode           |   必选 |   网关的dtmf 设置 rfc2833/info/auto/inband |
-  |   device_state_busy_at|   必选 |   等同于网关吞吐能力                        |
-  |   rtp_keepalive       |   必选 |   固定为60                                |
-  |   rtp_timeout         |   必选 |   固定为60                                |
-  |   rtp_timeout_hold    |   必选 |   固定为60                                |
-  |   timers              |   必选 |   固定为no                                |
-  
-
-
-#### single
-- URL 格式: `http://${host}/interface/realtime/endpoint/multi`
-
-- 参数:  
-    |   字段          |   可选 |   描述                                |
-    |   ------------ |   ---- |   ------------------------------------|
-    |   id           |   必选 |   ip地址或网关名称                      |
-- 返回:
-  - String格式数
-
-  |   字段                 |   可选 |   描述                                   |
-  |   ------------        |   ---- |   ------------------------------------  |
-  |   id                  |   必选 |   网关名称                                |
-  |   type                |   必选 |   固定为endpoint                          |
-  |   transport           |   必选 |   固定为transport-udp-nat                 |
-  |   context             |   必选 |   固定为default                           |
-  |   disallow            |   必选 |   网关codec选择disallow                   |
-  |   allow               |   必选 |   网关codec选择allow                      |
-  |   dtmf_mode           |   必选 |   网关的dtmf 设置 rfc2833/info/auto/inband |
-  |   device_state_busy_at|   必选 |   等同于网关吞吐能力                        |
-  |   rtp_keepalive       |   必选 |   固定为60                                |
-  |   rtp_timeout         |   必选 |   固定为60                                |
-  |   rtp_timeout_hold    |   必选 |   固定为60                                |
-  |   timers             |   必选 |   固定为no                                |
+| 字段                       | 数据类型     | 说明                                                    |
+| -------------------------- | ------------ | ------------------------------------------------------- |
+| __cdr_customer_number      | string       | cdr客户号码 eg."18800101027"                            |
+| __cdr_customer_number_type | String       | cdr客户号码类型 eg.2                                    |
+| __cdr_customer_area_code   | String       | cdr客户号码区号 eg."010"                                |
+| number_trunk_area_code     | String       | 中继号码区号 eg."021"                                   |
+| __enterprise_id            | String       | 企业ID eg."5000000"                                     |
+| cdr_hotline                | String       | cdr热线号码 eg."02180206528"                            |
+| enterprise_call_limit_ib   | String       | 企业呼入限制 eg.200                                     |
+| enterprise_status          | String       | 企业状态标志 eg.1                                       |
+| is_restrict_check          | String       | 是否检查黑名单,调用`CheckBlackList`接口 eg."1"          |
+| is_record                  | String       | 是否录音 eg."1"                                         |
+| ~~                         | record_scope | String                                                  | eg."1" | ~~ |
+| is_dual_record_open        | String       | 开启双轨录音(`Monitor`)或者禁止(`MixMonitor`) eg."1"    |
+| is_crbt_open               | String       | 是否开启彩铃 eg."1"                                     |
+| is_asr_transfer_open       | String       | 是否开启asr功能 eg."0"                                  |
+| ivr_router_type            | String       | ivr路由类型 取值`1`转入ivr `2`转固定电话 `3`转分机 eg.1 |
+| __ivr_id                   | String       | ivr ID eg."10"                                          |
+| valid_ivr                  | String       | ivr使能有效标志 eg."1"                                  |
