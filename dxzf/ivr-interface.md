@@ -1,13 +1,11 @@
 [TOC]
 
 ### 登录相关接口
-
 #### 1. 登录
-
-- URL:/api/system/login
-- Method:POST
-- Content type: application/json
-- 输入参数：
+* URL:/api/system/login
+* Method:POST
+* Content type: application/json
+* 输入参数：
 
 | 参数名       | 是否必填 | 数据类型 | 说明             |
 | ------------ | -------- | -------- | ---------------- |
@@ -15,7 +13,7 @@
 | password     | 是       | String   | 密码             |
 | securityCode | 是       | String   | 用户输入的验证码 |
 
-- 返回结果：
+* 返回结果：
 
 | 字段        | 数据类型 | 说明                                                 |
 | ----------- | -------- | ---------------------------------------------------- |
@@ -23,7 +21,7 @@
 | description | String   | 状态说明，例如登录成功、用户名或密码错误、验证码错误 |
 | data        | Object   | 保存了用户信息的对象                                 |
 
-- 示例
+* 示例
 
 ```
 {
@@ -69,7 +67,7 @@
 | status      | int      | 0成功，-1失败          |
 | description | String   | 状态说明，例如登出成功 |
 
-- 示例
+* 示例
 
 ```
 {
@@ -121,10 +119,10 @@
 
 #### 5. 获取验证码
 
-- URL:/api/login/securitycode
-- Method:GET 
-- 输入参数：无
-- 返回结果：验证码图片
+* URL:/api/login/securitycode
+* Method:GET 
+* 输入参数：无
+* 返回结果：验证码图片
 
 #### 6. 获取用户登录状态以及角色
 
@@ -903,7 +901,6 @@
 | switchOtherNext | 否       | string   | 其他值跳转节点，默认为空串               |
 
 #### 说明
-
 1、新增ivr时后台默认添加root（0）节点作为根节点，也就是页面上的开始节点 root节点只有一个rootNext属性
 
 
