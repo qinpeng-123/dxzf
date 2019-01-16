@@ -13,6 +13,13 @@
 [&emsp;&emsp;6.获取用户登录状态以及角色](#6-获取用户登录状态以及角色)
 
 
+[ivr相关接口](#ivr相关接口)
+
+[&emsp;&emsp;1. 新增ivr配置](#1-新增ivr配置)
+
+[&emsp;&emsp;2. 删除ivr配置](#2-删除ivr配置)
+
+
 ### 登录相关接口
 #### 1. 登录
 * URL:/api/system/login
