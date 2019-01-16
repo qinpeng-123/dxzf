@@ -19,6 +19,36 @@
 
 [&emsp;&emsp;2. 删除ivr配置](#2-删除ivr配置)
 
+[&emsp;&emsp;3. 编辑ivr配置](#3-编辑ivr配置)
+
+[&emsp;&emsp;4.ivr列表](#4-ivr列表)
+
+[&emsp;&emsp;5.根据id查询ivr](#5-根据id查询ivr)
+
+[ivrNode相关接口](#ivrNode相关接口)
+
+[&emsp;&emsp;1. 新增ivrNode](#1-新增ivrNode)
+
+[&emsp;&emsp;2. 删除ivrNode](#2-删除ivrNode)
+
+[&emsp;&emsp;3.编辑ivrNode](#3-编辑ivrNode)
+
+[&emsp;&emsp;4. 查找某个ivr下所有的ivrNode](#4-查找某个ivr下所有的ivrNode)
+
+[&emsp;&emsp;5. 根据id查找ivrNode](#5-根据id查找ivrNode)
+
+[&emsp;&emsp;6. 根据endpoint查找ivrNode](#6-根据endpoint查找ivrNode)
+
+[&emsp;&emsp;6. 根据endpoint查找ivrNode](#6-根据endpoint查找ivrNode)
+
+
+
+
+
+
+
+
+
 
 ### 登录相关接口
 #### 1. 登录
